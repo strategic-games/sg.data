@@ -25,6 +25,12 @@
 #' }
 #' @references{
 #'   \insertRef{Rammstedt:2005aa}{sg.data}
+#'   \insertRef{Hossiep:2003aa}{sg.data}
+#'   \insertRef{Wacker:2008aa}{sg.data}
+#'   \insertRef{Franken:1995aa}{sg.data}
+#'   \insertRef{Kersting:2008aa}{sg.data}
+#'   \insertRef{Moosbrugger:2011aa}{sg.data}
+#'   \insertRef{Ulfert:2017aa}{sg.data}
 #' }
 #' @importFrom Rdpack reprompt
 "online"
