@@ -1,9 +1,11 @@
 Package: sg.data
 Version: 0.0.0.9000
-Title: What the Package Does (One Line, Title Case)
-Description: What the package does (one paragraph).
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-License: What license is it under?
+Title: Empirical Data From Strategic Dyadic Games
+Description: This package contains purely experimental data that were collected for study purposes, game results, scores, and subject related variables.
+Authors@R: person("Tamara", "Cook", email = "tamara.cook@icloud.com", role = c("aut", "cre"))
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
+URL: https://github.com/strategic-games/sg.data
+BugReports: https://github.com/strategic-games/sg.data/issues
