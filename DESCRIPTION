@@ -2,6 +2,7 @@ Package: sg.data
 Version: 0.0.0.9000
 Title: Empirical Data From Strategic Dyadic Games
 Description: This package contains purely experimental data that were collected for study purposes, game results, scores, and subject related variables.
+Depends: R (>= 2.10)
 Authors@R: person("Tamara", "Cook", email = "tamara.cook@icloud.com", role = c("aut", "cre"))
 License: MIT + file LICENSE
 Encoding: UTF-8
