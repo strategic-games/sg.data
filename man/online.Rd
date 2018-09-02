@@ -40,4 +40,8 @@ Online und an Testungsterminen abgefragte Personendaten, Konstrukte und aggregie
 \insertRef{Ulfert:2017aa}{sg.data}
 }
 }
+\seealso{
+Other empirical data: \code{\link{begriffix}}
+}
+\concept{empirical data}
 \keyword{datasets}

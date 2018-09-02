@@ -33,4 +33,5 @@
 #'   \insertRef{Ulfert:2017aa}{sg.data}
 #' }
 #' @importFrom Rdpack reprompt
+#' @family empirical data
 "online"

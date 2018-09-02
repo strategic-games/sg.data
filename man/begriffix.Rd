@@ -18,4 +18,8 @@ data(begriffix)
 \description{
 Begriffix data in long format
 }
+\seealso{
+Other empirical data: \code{\link{online}}
+}
+\concept{empirical data}
 \keyword{datasets}

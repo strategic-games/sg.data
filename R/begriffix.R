@@ -10,4 +10,5 @@
 #'   \item{j <int>}{Sequence for player 1}
 #'   \item{sp <int>}{Starting player}
 #' }
+#' @family empirical data
 "begriffix"
