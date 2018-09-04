@@ -41,7 +41,8 @@ Online und an Testungsterminen abgefragte Personendaten, Konstrukte und aggregie
 }
 }
 \seealso{
-Other empirical data: \code{\link{begriffix}}
+Other empirical data: \code{\link{Begriffix_Startbuchstaben}},
+  \code{\link{begriffix}}
 }
 \concept{empirical data}
 \keyword{datasets}
