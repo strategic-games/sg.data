@@ -14,10 +14,17 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 RdMacros: Rdpack
 Imports: 
-    Rdpack
+    Rdpack,
+    RProtoBuf (>= 0.4.12.1),
+    processx,
+    lubridate
 Suggests: 
     knitr,
     rmarkdown,
     ggplot2,
-    testthat
+    testthat,
+    dplyr,
+    pander
 VignetteBuilder: knitr
+Remotes: 
+    eddelbuettel/rprotobuf
