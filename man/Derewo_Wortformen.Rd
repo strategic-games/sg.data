@@ -21,5 +21,8 @@ mit Benutzerdokumentation,
 © Institut für Deutsche Sprache, Programmbereich Korpuslinguistik,
 Mannheim,  Deutschland, 2009.
 }
-\concept{dictionaries}
+\seealso{
+Other word lists: \code{\link{Scrabbledict_german}}
+}
+\concept{word lists}
 \keyword{datasets}

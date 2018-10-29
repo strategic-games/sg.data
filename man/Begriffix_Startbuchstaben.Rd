@@ -6,7 +6,7 @@
 \title{Begriffix Start letter combinations}
 \format{A character vector}
 \usage{
-data(begriffix_startbuchstaben)
+data(Begriffix_Startbuchstaben)
 }
 \description{
 This set of start letter combinations was used for the empirical games.
