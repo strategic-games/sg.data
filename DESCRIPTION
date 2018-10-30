@@ -17,7 +17,8 @@ Imports:
     Rdpack,
     RProtoBuf (>= 0.4.12.1),
     processx,
-    lubridate
+    lubridate,
+    purrr
 Suggests: 
     knitr,
     rmarkdown,
