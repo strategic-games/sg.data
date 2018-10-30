@@ -1,7 +1,7 @@
 library(dplyr)
 
 online <- "complete_wide_format.sav" %>%
-file.path("data-raw", .) %>%
+system.file("data-raw", .) %>%
 haven::read_spss() %>%
 mutate_at("Testung", recode, !!! as.list(
   lubridate::dmy("11.12.2017", "12.12.2017", "14.12.2017", "18.12.2017", "19.12.2017")
