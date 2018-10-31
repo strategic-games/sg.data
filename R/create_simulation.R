@@ -16,7 +16,7 @@
 #' @param supplement A character scalar, more optional explanations.
 #' @param params A list of vectors. Each combination of these vectors becomes a simulation condition.
 #' @return A RProtoBuf Message of type strategic_games.Simulation.
-#' @importFrom purrr cross map map_chr %||%
+#' @importFrom purrr cross %||%
 #' @import RProtoBuf
 #' @export
 create_simulation <- function(title, supplement = NULL, params) {
@@ -31,7 +31,7 @@ create_simulation <- function(title, supplement = NULL, params) {
       title = title,
       supplement = supplement
     ),
-    conditions = map(cross(params), create_condition)
+    conditions = lapply(cross(params), FUN = create_condition)
   )
 }
 
