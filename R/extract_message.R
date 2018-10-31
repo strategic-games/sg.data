@@ -6,6 +6,9 @@
 #' @return A list if x is a Message or recursive, or an atomic if x is atomic
 #' @export
 extract_message <- function(x) {
+  if (is.character(x)) {
+  	return(enc2utf8(x))
+  }
   if (is.atomic(x)) {
     return(x)
   }
@@ -14,7 +17,7 @@ extract_message <- function(x) {
   }
   if (class(x) == "Message") {
     if (name(descriptor(x)) == "Timestamp") {
-      as.Date(x$seconds, origin = "1970-01-01")
+      as.POSIXct(x[["seconds"]], tz = "UTC", origin = "1970-01-01")
     } else {
       lapply(as.list(x), FUN = extract_message)
     }
