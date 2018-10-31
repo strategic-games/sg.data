@@ -16,7 +16,7 @@ run_simulation <- function(x, path = NULL, clean = T, command = NULL) {
   stopifnot(file.exists(command))
   files <- tempfile(c("simulation_config", "simulation_results"), tmpdir = path, fileext=".pb")
   x$serialize(files[1])
-  processx::run(command, c("simulation", "run", "-o", files[2], files[1]))
+  processx::run(command, c("simulation", "run", "-p", files[2], files[1]))
   simulation <- read(P("strategic_games.SimulationResults"), files[2])
   if (clean == T) unlink(files)
   extract_message(simulation)
