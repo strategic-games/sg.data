@@ -18,7 +18,8 @@ Imports:
     RProtoBuf (>= 0.4.12.1),
     processx,
     lubridate,
-    purrr
+    purrr,
+    stringr
 Suggests: 
     knitr,
     rmarkdown,

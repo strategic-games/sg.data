@@ -10,9 +10,10 @@
 #' source <- "an example list"
 #' path <- serialize_wordlist(words, source)
 #' path
+#' @importFrom stringr str_to_lower
 #' @export
 serialize_wordlist <- function(words = NULL, source = NULL, path = NULL) {
-  if (is.null(words)) words <- sg.data::Derewo_Wortformen$word
+  if (is.null(words)) words <- str_to_lower(sg.data::Derewo_Wortformen$word)
   if (is.null(source)) source <- "Derewo Wortformen"
   if (is.null(path)) path <- tempfile(pattern = "wortlist", fileext = ".pb")
   word_list <- new(P("strategic_games.WordList"),
