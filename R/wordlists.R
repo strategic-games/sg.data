@@ -9,7 +9,15 @@
 #' Korpusbasierte Wortformenliste DEREWO, v-100000t-2009-04-30-0.1, 
 #' mit Benutzerdokumentation,
 #' <http://www.ids-mannheim.de/kl/derewo/>,
-#' © Institut für Deutsche Sprache, Programmbereich Korpuslinguistik,
+#' © Institut für Deutsche Sprache, Programmbereich Korpuslinguistik,
 #' Mannheim,  Deutschland, 2009.
 #' @family word lists
 "Derewo_Wortformen"
+
+#' A scrabble dictionary with 594103 german words
+#'
+#' @usage data(Scrabbledict_german)
+#' @format A tibble with 1 variable and 594103 rows
+#' @source <https://sourceforge.net/projects/scrabbledict/>
+#' @family word lists
+"Scrabbledict_german"

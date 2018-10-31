@@ -18,5 +18,8 @@ data(dict_oom)
 \description{
 This dataset contains the duration in moves of 500 simulated Begriffix games, and the corresponding number of words in the players' dictionaries. Both players shared one dictionary per game. For 5 different sizes (\code{10^(1:5)}), 100 games were generated. The start letters were randomly selected for each game from the human-generated ones. \code{\link{Derewo_Wortformen}} was used as full dictionary where the players got the nth start words.
 }
+\seealso{
+Other simulation data: \code{\link{simulation_vocabulary}}
+}
 \concept{simulation data}
 \keyword{datasets}
