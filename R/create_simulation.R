@@ -42,17 +42,17 @@ create_condition <- function(x) {
     starter = new(P("strategic_games.Simulation.Condition.Player"),
       vocabulary = new(P("strategic_games.Vocabulary"),
         path = x$starter_wordlist_path,
-        prefix = x$starter_wordlist_prefix %||% 0,
-        suffix = x$starter_wordlist_suffix %||% 0,
-        sample = x$starter_wordlist_sample %||% 0
+        prefix = x$starter_wordlist_prefix,
+        suffix = x$starter_wordlist_suffix,
+        sample = x$starter_wordlist_sample
       )
     ),
     opponent = new(P("strategic_games.Simulation.Condition.Player"),
       vocabulary = new(P("strategic_games.Vocabulary"),
         path = x$opponent_wordlist_path %||% x$starter_wordlist_path,
-        prefix = x$opponent_wordlist_prefix %||% 0,
-        suffix = x$opponent_wordlist_suffix %||% 0,
-        sample = x$opponent_wordlist_sample %||% 0
+        prefix = x$opponent_wordlist_prefix,
+        suffix = x$opponent_wordlist_suffix,
+        sample = x$opponent_wordlist_sample
       )
       )
     )
