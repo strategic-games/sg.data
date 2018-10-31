@@ -4,21 +4,19 @@
 #'
 #' @param x A RProtoBuf Message, list or atomic
 #' @return A list if x is a Message or recursive, or an atomic if x is atomic
-#' @importFrom purrr map
-#' @importFrom lubridate as_datetime
 #' @export
 extract_message <- function(x) {
   if (is.atomic(x)) {
     return(x)
   }
   if (is.recursive(x)) {
-    return(map(x, extract_message))
+    return(lapply(x, FUN = extract_message))
   }
   if (class(x) == "Message") {
     if (name(descriptor(x)) == "Timestamp") {
-      as_datetime(x$seconds)
+      as.Date(x$seconds, origin = "1970-01-01")
     } else {
-      map(as.list(x), extract_message)
+      lapply(as.list(x), FUN = extract_message)
     }
   }
 }
