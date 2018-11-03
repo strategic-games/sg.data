@@ -8,7 +8,7 @@
 #' @param clean If true, the generated files are deleted after processing.
 #' @param command The path to the hangman executable which must be installed on the local system. If omitted, ~/bin/hangman is tried.
 #' @return The simulation results as list tree structure.
-#' @import RProtoBuf
+#' @importFrom RProtoBuf read
 #' @export
 run_simulation <- function(x, path = NULL, clean = T, command = NULL) {
   if (is.null(path)) path <- tempdir()

@@ -7,10 +7,13 @@
 #' @export
 extract_message <- function(x) {
   if (is.character(x)) {
-  	return(enc2utf8(x))
+    return(enc2utf8(x))
   }
   if (is.atomic(x)) {
     return(x)
+  }
+  if (is.recursive(x) && length(x) == 0) {
+    return(NA)
   }
   if (is.recursive(x)) {
     return(lapply(x, FUN = extract_message))

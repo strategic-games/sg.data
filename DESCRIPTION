@@ -18,14 +18,18 @@ Imports:
     RProtoBuf (>= 0.4.12.1),
     processx,
     purrr,
-    stringr
+    stringr,
+    magrittr,
+    tidyr,
+    tibble,
+    rlang
 Suggests: 
     knitr,
     rmarkdown,
     ggplot2,
     testthat,
-    dplyr,
-    pander
+    pander,
+    dplyr
 VignetteBuilder: knitr
 Remotes: 
     eddelbuettel/rprotobuf

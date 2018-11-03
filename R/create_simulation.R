@@ -17,7 +17,7 @@
 #' @param params A list of vectors. Each combination of these vectors becomes a simulation condition.
 #' @return A RProtoBuf Message of type strategic_games.Simulation.
 #' @importFrom purrr cross %||%
-#' @import RProtoBuf
+#' @importFrom RProtoBuf P
 #' @export
 create_simulation <- function(title, supplement = NULL, params) {
   if (is.null(params[["start_letters"]])) {
