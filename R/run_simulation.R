@@ -25,5 +25,5 @@ run_simulation <- function(x, path = NULL, clean = T, command = NULL) {
   processx::run(command, c("simulation", "run", "-p", files[2], files[1]))
   simulation <- read(P("strategic_games.SimulationResults"), files[2])
   if (clean == T) unlink(files)
-  extract_message(simulation)
+  simulation2df(simulation)
 }
