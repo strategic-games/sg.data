@@ -9,6 +9,9 @@ simulation2df(x)
 \arguments{
 \item{x}{A list or message of type SimulationResults.}
 }
+\value{
+A tibble
+}
 \description{
 Takes a list structure according to a SimulationResults message and transforms it to a tibble with nested tibbles if appropriate.
 }
