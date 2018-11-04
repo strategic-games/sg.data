@@ -13,9 +13,11 @@ simulation2df <- function(x) {
   }
   conditions <- x$config$conditions %>%
   purrr::transpose() %>%
-  purrr::modify_at(c("starter", "opponent"), ~lapply(., FUN = purrr::flatten_dfc)) %>%
+  purrr::modify_at(c("starter", "opponent", "vocabulary"), ~lapply(., FUN = purrr::flatten_dfc)) %>%
   tibble::as_tibble() %>%
-  tidyr::unnest(.sep = "_")
+  tidyr::unnest(.sep = "_") %>%
+  purrr::modify_at("start_letters", factor) %>%
+  purrr::modify_if(is.double, as.integer)
 
   df <- x$trials %>%
   purrr::transpose() %>%
@@ -39,6 +41,8 @@ moves2df <- function(x) {
   })
   tmp <- purrr::transpose(tmp)
   tmp <- purrr::modify_at(tmp, c("row", "column", "direction", "word"), purrr::simplify)
+  tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(.+1))
+tmp <- purrr::modify_at(tmp, "direction", factor, levels = c(0, 1), labels = c("horizontal", "vertical"))
   tmp$hits <- lapply(tmp$hits, FUN = hits2df)
   tibble::as_tibble(tmp)
 }
@@ -49,5 +53,7 @@ hits2df <- function(x) {
   })
   tmp <- purrr::transpose(tmp)
   tmp <- purrr::modify_at(tmp, c("row", "column", "direction"), purrr::simplify)
+  tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(.+1))
+tmp <- purrr::modify_at(tmp, "direction", factor, levels = c(0, 1), labels = c("horizontal", "vertical"))
   tibble::as_tibble(tmp)
 }
