@@ -3,7 +3,7 @@
 #' Takes a list structure according to a SimulationResults message and transforms it to a tibble with nested tibbles if appropriate.
 #'
 #' @param x A list or message of type SimulationResults.
-#' @returns A tibble
+#' @return A tibble
 #' @importFrom rlang .data
 #' @export
 simulation2df <- function(x) {

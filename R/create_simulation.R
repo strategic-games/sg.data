@@ -54,6 +54,9 @@ create_condition <- function(x) {
         suffix = x$opponent_wordlist_suffix,
         sample = x$opponent_wordlist_sample
       )
-      )
+    ),
+    vocabulary = new(P("strategic_games.Vocabulary"),
+      path = x$vocabulary_path %||% x$starter_wordlist_path
     )
+  )
 }
