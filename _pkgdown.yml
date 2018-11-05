@@ -1,0 +1,40 @@
+reference:
+  - title: Simulation datasets
+    desc: >
+      Game simulation data that were created with Hangman
+    contents:
+      - simulation_vocabulary
+  - title: Empirical datasets
+    desc: >
+      Experimental game data
+    contents:
+      - begriffix
+      - online
+  - title: Auxiliary data
+    desc: >
+      Game supporting data
+    contents:
+      - Begriffix_Startbuchstaben
+      - Derewo_Wortformen
+      - Scrabbledict_german
+  - title: Simulation helpers
+    desc: >
+      Utility functions for creating simulations
+    contents:
+      - create_simulation
+      - extract_message
+      - run_simulation
+      - serialize_wordlist
+      - simulation2df
+articles:
+- title: About this package
+  desc: >
+    Background information and documentation
+  contents:
+  - simulation_infrastruktur
+- title: Analysis
+  desc: >
+    Data explorations and analysis
+  contents:
+  - fairness
+  - vocabulary
