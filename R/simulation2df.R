@@ -13,7 +13,10 @@ simulation2df <- function(x) {
   }
   conditions <- x$config$conditions %>%
   purrr::transpose() %>%
-  purrr::modify_at(c("starter", "opponent", "vocabulary"), ~lapply(., FUN = purrr::flatten_dfc)) %>%
+  purrr::modify_at(
+    c("starter", "opponent", "vocabulary"),
+    ~lapply(., FUN = purrr::flatten_dfc)
+  ) %>%
   tibble::as_tibble() %>%
   tidyr::unnest(.sep = "_") %>%
   purrr::modify_at("start_letters", factor) %>%
@@ -21,8 +24,10 @@ simulation2df <- function(x) {
 
   df <- x$trials %>%
   purrr::transpose() %>%
-  purrr::modify_at(c("condition", "trial"), ~purrr::map_int(., ~as.integer(. + 1))) %>%
-  purrr::modify_at("condition", ~purrr::map(., ~conditions[.,])) %>%
+  purrr::modify_at(
+    c("condition", "trial"), ~purrr::map_int(., ~as.integer(. + 1))
+  ) %>%
+  purrr::modify_at("condition", ~purrr::map(., ~conditions[., ])) %>%
   purrr::modify_at("moves", ~lapply(., FUN = moves2df)) %>%
   tibble::as_tibble() %>%
   tidyr::unnest(.data$condition)
@@ -40,9 +45,14 @@ moves2df <- function(x) {
     c(m[["place"]], m[c("word", "hits")])
   })
   tmp <- purrr::transpose(tmp)
-  tmp <- purrr::modify_at(tmp, c("row", "column", "direction", "word"), purrr::simplify)
-  tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(.+1))
-tmp <- purrr::modify_at(tmp, "direction", factor, levels = c(0, 1), labels = c("horizontal", "vertical"))
+  tmp <- purrr::modify_at(
+    tmp, c("row", "column", "direction", "word"), purrr::simplify
+  )
+  tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(. + 1))
+  tmp <- purrr::modify_at(
+    tmp, "direction",
+    factor, levels = 0:1, labels = c("horizontal", "vertical")
+  )
   tmp$hits <- lapply(tmp$hits, FUN = hits2df)
   tibble::as_tibble(tmp)
 }
@@ -52,8 +62,13 @@ hits2df <- function(x) {
     c(h[["place"]], h["words"])
   })
   tmp <- purrr::transpose(tmp)
-  tmp <- purrr::modify_at(tmp, c("row", "column", "direction"), purrr::simplify)
-  tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(.+1))
-tmp <- purrr::modify_at(tmp, "direction", factor, levels = c(0, 1), labels = c("horizontal", "vertical"))
+  tmp <- purrr::modify_at(
+    tmp, c("row", "column", "direction"), purrr::simplify
+  )
+  tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(. + 1))
+  tmp <- purrr::modify_at(
+    tmp, "direction",
+    factor, levels = 0:1, labels = c("horizontal", "vertical")
+  )
   tibble::as_tibble(tmp)
 }
