@@ -4,7 +4,7 @@
 \name{simulation_vocabulary}
 \alias{simulation_vocabulary}
 \title{Begriffix simulations with various vocabulary sizes}
-\format{An object of class \code{list} of length 2.}
+\format{A data frame with 4750 rows and 16 variables where each row represents a game.}
 \source{
 generated with \href{https://github.com/strategic-games/hangman}{Hangman}
 }
