@@ -29,5 +29,6 @@ Suggests:
     ggplot2,
     testthat,
     pander,
-    dplyr
+    dplyr,
+    bookdown
 VignetteBuilder: knitr
