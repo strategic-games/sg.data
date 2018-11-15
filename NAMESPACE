@@ -3,6 +3,7 @@
 export("%>%")
 export(create_simulation)
 export(extract_message)
+export(initial_boards)
 export(run_simulation)
 export(serialize_wordlist)
 export(simulation2df)
