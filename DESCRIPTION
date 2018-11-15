@@ -11,7 +11,7 @@ ByteCompile: true
 URL: https://github.com/strategic-games/sg.data
 BugReports: https://github.com/strategic-games/sg.data/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 RdMacros: Rdpack
 Imports: 
     Rdpack,
