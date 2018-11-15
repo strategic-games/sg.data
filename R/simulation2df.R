@@ -11,6 +11,7 @@ simulation2df <- function(x) {
     tmp <- extract_message(x)
     simulation2df(tmp)
   }
+  strategy_names <- names(P("strategic_games.Simulation.Condition.Player.BegriffixStrategy"))
   conditions <- x$config$conditions %>%
   purrr::transpose() %>%
   purrr::modify_at(
@@ -20,7 +21,11 @@ simulation2df <- function(x) {
   tibble::as_tibble() %>%
   tidyr::unnest(.sep = "_") %>%
   purrr::modify_at("start_letters", factor) %>%
-  purrr::modify_if(is.double, as.integer)
+  purrr::modify_if(is.double, as.integer) %>%
+purrr::modify_at(
+  c("starter_begriffixStrategy", "opponent_begriffixStrategy"),
+  ~as.factor(strategy_names[. + 1])
+)
 
   df <- x$trials %>%
   purrr::transpose() %>%
@@ -40,6 +45,7 @@ simulation2df <- function(x) {
 }
 
 moves2df <- function(x) {
+  direction_names <- names(P("strategic_games.SimulationResults.Place.Direction"))
   if (is.atomic(x)) return(x)
   tmp <- lapply(x, FUN = function(m) {
     c(m[["place"]], m[c("word", "hits")])
@@ -51,13 +57,14 @@ moves2df <- function(x) {
   tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(. + 1))
   tmp <- purrr::modify_at(
     tmp, "direction",
-    factor, levels = 0:1, labels = c("horizontal", "vertical")
+    ~as.factor(direction_names[. + 1])
   )
   tmp$hits <- lapply(tmp$hits, FUN = hits2df)
   tibble::as_tibble(tmp)
 }
 
 hits2df <- function(x) {
+  direction_names <- names(P("strategic_games.SimulationResults.Place.Direction"))
   tmp <- lapply(x, FUN = function(h) {
     c(h[["place"]], h["words"])
   })
@@ -68,7 +75,7 @@ hits2df <- function(x) {
   tmp <- purrr::modify_at(tmp, c("row", "column"), ~as.integer(. + 1))
   tmp <- purrr::modify_at(
     tmp, "direction",
-    factor, levels = 0:1, labels = c("horizontal", "vertical")
+    ~as.factor(direction_names[. + 1])
   )
   tibble::as_tibble(tmp)
 }
