@@ -6,16 +6,12 @@
 #' @param x A RProtoBuf Message of type strategic_games.Simulation.
 #' @param path The directory path where the generated .pb files are written to.
 #' @param clean If true, the generated files are deleted after processing.
-#' @param command The path to the hangman executable which must be installed on the local system. If omitted, ~/bin/hangman is tried.
+#' @param command The name or path to the hangman executable which must be in PATH. If omitted, ~/bin/hangman is tried.
 #' @return The simulation results as list tree structure.
 #' @importFrom RProtoBuf read
 #' @export
-run_simulation <- function(x, path = NULL, clean = T, command = NULL) {
+run_simulation <- function(x, path = NULL, clean = T, command = "hangman") {
   if (is.null(path)) path <- tempdir()
-  if (is.null(command)) {
-    command <- normalizePath(file.path("~", "bin", "hangman"))
-  }
-  stopifnot(file.exists(command))
   files <- tempfile(
     c("simulation_config", "simulation_results"),
     tmpdir = path,
