@@ -17,5 +17,5 @@ Returns initial Begriffix boards from start letters
 }
 \examples{
   sl <- c("laer", "jaul")
-.  initial_boards(sl)
+  initial_boards(sl)
 }

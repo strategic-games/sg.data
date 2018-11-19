@@ -4,7 +4,7 @@
 #' @return A list of 8*8 matrices with the input start letters inserted at the middle position.
 #' @examples
 #'   sl <- c("laer", "jaul")
-#'.  initial_boards(sl)
+#'   initial_boards(sl)
 #' @export
 initial_boards <- function(start_letters) {
   board <- matrix("?", nrow = 8, ncol = 8)

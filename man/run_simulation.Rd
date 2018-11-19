@@ -4,7 +4,7 @@
 \alias{run_simulation}
 \title{Run a simulation config}
 \usage{
-run_simulation(x, path = NULL, clean = T, command = NULL)
+run_simulation(x, path = NULL, clean = T, command = "hangman")
 }
 \arguments{
 \item{x}{A RProtoBuf Message of type strategic_games.Simulation.}
@@ -13,7 +13,7 @@ run_simulation(x, path = NULL, clean = T, command = NULL)
 
 \item{clean}{If true, the generated files are deleted after processing.}
 
-\item{command}{The path to the hangman executable which must be installed on the local system. If omitted, ~/bin/hangman is tried.}
+\item{command}{The name or path to the hangman executable which must be in PATH. If omitted, ~/bin/hangman is tried.}
 }
 \value{
 The simulation results as list tree structure.
