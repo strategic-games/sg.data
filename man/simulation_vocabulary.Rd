@@ -4,7 +4,7 @@
 \name{simulation_vocabulary}
 \alias{simulation_vocabulary}
 \title{Begriffix simulations with various vocabulary sizes}
-\format{A data frame with 4750 rows and 16 variables where each row represents a game.}
+\format{Hangman simulation with 4.750 games.}
 \source{
 generated with \href{https://github.com/strategic-games/hangman}{Hangman}
 }
@@ -15,7 +15,8 @@ data(simulation_vocabulary)
 Begriffix simulations with various vocabulary sizes
 }
 \seealso{
-Other simulation data: \code{\link{dict_oom}}
+Other simulation data: \code{\link{simulation_strategy}},
+  \code{\link{simulation_vocabulary_normal}}
 }
 \concept{simulation data}
 \keyword{datasets}
