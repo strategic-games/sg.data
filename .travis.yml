@@ -1,3 +1,4 @@
+language: r
 before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   provider: script
