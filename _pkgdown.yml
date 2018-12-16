@@ -14,9 +14,10 @@ reference:
       - online
   - title: Auxiliary data
     desc: >
-      Game supporting data
+      Game supporting data, word lists, etc.
     contents:
       - Begriffix_Startbuchstaben
+      - DeReChar
       - Derewo_Wortformen
       - Scrabbledict_german
   - title: Simulation helpers
