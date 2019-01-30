@@ -15,7 +15,8 @@ simulation_strategy
 Compare players with long and short move selection strategy
 }
 \seealso{
-Other simulation data: \code{\link{simulation_vocabulary_normal}},
+Other simulation data: \code{\link{simulation_thesis}},
+  \code{\link{simulation_vocabulary_normal}},
   \code{\link{simulation_vocabulary}}
 }
 \concept{simulation data}

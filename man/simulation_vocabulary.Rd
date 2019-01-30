@@ -16,6 +16,7 @@ Begriffix simulations with various vocabulary sizes
 }
 \seealso{
 Other simulation data: \code{\link{simulation_strategy}},
+  \code{\link{simulation_thesis}},
   \code{\link{simulation_vocabulary_normal}}
 }
 \concept{simulation data}
