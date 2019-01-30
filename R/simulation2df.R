@@ -15,7 +15,7 @@ simulation2df <- function(x) {
   conditions <- x$config$conditions %>%
   purrr::transpose() %>%
   purrr::modify_at(
-    c("starter", "opponent", "vocabulary"),
+    c("word_min_length", "starter", "opponent", "vocabulary"),
     ~lapply(., FUN = purrr::flatten_dfc)
   ) %>%
   tibble::as_tibble() %>%
