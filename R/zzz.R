@@ -1,7 +1,8 @@
 #' @import RProtoBuf
 .onLoad <- function(libname, pkgname) {
   proto_dir <- system.file("proto", package = "sg.data")
-  RProtoBuf::readProtoFiles2(protoPath = proto_dir)
+  proto_path <- "/usr/local/opt/protobuf/include"
+  RProtoBuf::readProtoFiles2(dir = proto_dir, protoPath = proto_path)
 }
 
 .onUnload <- function(libname, pkgname) {
