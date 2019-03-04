@@ -19,8 +19,7 @@ data(begriffix)
 Begriffix data in long format
 }
 \seealso{
-Other empirical data: \code{\link{Begriffix_Startbuchstaben}},
-  \code{\link{online}}
+Other empirical data: \code{\link{online}}
 }
 \concept{empirical data}
 \keyword{datasets}
