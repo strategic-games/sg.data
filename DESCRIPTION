@@ -15,10 +15,7 @@ RoxygenNote: 6.1.1
 RdMacros: Rdpack
 Imports: 
     Rdpack,
-    RProtoBuf,
-    processx,
     purrr,
-    stringr,
     magrittr,
     tidyr,
     tibble,
