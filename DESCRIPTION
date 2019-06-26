@@ -6,7 +6,7 @@ Depends: R (>= 2.10)
 Authors@R: person("Tamara", "Cook", email = "10754072+tamaracha@users.noreply.github.com", role = c("aut", "cre"))
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 ByteCompile: true
 URL: https://github.com/strategic-games/sg.data
 BugReports: https://github.com/strategic-games/sg.data/issues
@@ -15,17 +15,17 @@ RoxygenNote: 6.1.1
 RdMacros: Rdpack
 Imports: 
     Rdpack,
-    purrr,
-    magrittr,
-    tidyr,
-    tibble,
-    rlang
 Suggests: 
     knitr,
     rmarkdown,
+    purrr,
+    magrittr,
+    tibble,
+    tidyr,
+    rlang,
+    dplyr,
     ggplot2,
     testthat,
     pander,
-    dplyr,
-    bookdown
+    sg.simulate
 VignetteBuilder: knitr
