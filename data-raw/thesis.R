@@ -1,6 +1,7 @@
 # packages
 library(tidyverse)
-library(sg.data)
+library(usethis)
+library(sg.simulate)
 
 set.seed(3825)
 
@@ -87,4 +88,20 @@ add_column(
   .after = 3
 )
 
-usethis::use_data(simulation_thesis, compress = "xz", overwrite=T)
+# Save moves and hits separately for faster loading
+thesis_moves <- simulation_thesis %>%
+unnest(trials) %>%
+select(-trial) %>%
+unnest(moves, .id = "game") %>%
+group_by(game) %>%
+mutate(move = seq_len(n()))
+
+thesis_hits <- thesis_moves %>%
+select(game, move, hits) %>%
+unnest(hits)
+
+thesis_moves %<>% select(1:19, 25, 20:23)
+
+use_data(simulation_thesis, overwrite = T, compress = "xz")
+use_data(thesis_moves, overwrite = T, compress = "xz")
+use_data(thesis_hits, overwrite = T, compress = "xz")
