@@ -72,15 +72,14 @@ raw <- run_simulation(config)
 simulation_thesis <- raw %>%
 extract_message() %>%
 simulation2df() %>%
-mutate_at(
-  vars(starter_path, opponent_path, vocabulary_path),
-  recode_factor, .default = "Derewo_Wortformen"
+
+thesis_moves <- thesis_moves %>%
+select(
+  -starter_path,
+  -opponent_path,
+  -starts_with("vocabulary")
 ) %>%
-rename(
-  starter_wordlist_name = starter_path,
-  opponent_wordlist_name = opponent_path,
-  vocabulary_name = vocabulary_path
-) %>%
+mutate_at(c("row", "column"), as.integer) %>%
 add_column(
   start_letters_origin = rep(
     map_chr(grid, "start_letters_origin"),
@@ -93,14 +92,17 @@ thesis_moves <- simulation_thesis %>%
 unnest(trials) %>%
 select(-trial) %>%
 unnest(moves, .id = "game") %>%
+mutate_at("game", as.integer) %>%
 group_by(game) %>%
-mutate(move = seq_len(n()))
+mutate(move = seq_len(n())) %>%
+ungroup
 
 thesis_hits <- thesis_moves %>%
 select(game, move, hits) %>%
-unnest(hits)
+unnest(hits) %>%
+mutate_at(vars(row, column), as.integer)
 
-thesis_moves %<>% select(1:19, 25, 20:23)
+thesis_moves %<>% select(start_letters:game, move, row:word)
 
 use_data(simulation_thesis, overwrite = T, compress = "xz")
 use_data(thesis_moves, overwrite = T, compress = "xz")
