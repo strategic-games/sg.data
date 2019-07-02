@@ -25,7 +25,5 @@ Suggests:
     rlang,
     dplyr,
     ggplot2,
-    testthat,
     pander,
-    sg.simulate
 VignetteBuilder: knitr
