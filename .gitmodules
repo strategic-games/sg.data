@@ -1,0 +1,3 @@
+[submodule "inst/proto"]
+	path = inst/proto
+	url = git@github.com:strategic-games/SimulationSchema
