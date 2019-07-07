@@ -14,16 +14,16 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 RdMacros: Rdpack
 Imports: 
-    Rdpack,
+    Rdpack
 Suggests: 
     knitr,
     rmarkdown,
-    purrr,
     magrittr,
+    purrr,
     tibble,
     tidyr,
     rlang,
     dplyr,
     ggplot2,
-    pander,
+    pander
 VignetteBuilder: knitr
