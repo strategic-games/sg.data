@@ -25,5 +25,6 @@ Suggests:
     rlang,
     dplyr,
     ggplot2,
-    pander
+    pander,
+    pipeR
 VignetteBuilder: knitr
