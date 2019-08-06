@@ -1,8 +1,8 @@
 Package: sg.data
 Version: 0.1.0
 Title: Empirical And Simulated Data From Strategic Dyadic Games
-Description: This package contains experimental and simulated data that were collected for study purposes, game results, scores, and subject related variables. Besides, it contains some helper for creating simulations, and analysis vignettes. It is just a research project that utilizes the R package structure.
-Depends: R (>= 2.10)
+Description: This package contains experimental and simulated data that were collected for study purposes, game results, scores, and subject related variables. Besides, it contains some helpers and auxiliary data for creating simulations. It is just a research project that utilizes the R package structure.
+Depends: R (>= 3.5)
 Authors@R: person("Tamara", "Cook", email = "10754072+tamaracha@users.noreply.github.com", role = c("aut", "cre"))
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -26,5 +26,6 @@ Suggests:
     dplyr,
     ggplot2,
     pander,
-    pipeR
+    pipeR,
+    stringr
 VignetteBuilder: knitr

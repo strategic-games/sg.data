@@ -27,7 +27,8 @@ Institut für Deutsche Sprache, Mannheim,
 Februar 2018
 }
 \seealso{
-Other auxiliary data: \code{\link{Begriffix_Startbuchstaben}}
+Other auxiliary data: \code{\link{Begriffix_Startbuchstaben}},
+  \code{\link{DEREWO_letter_pairs}}
 }
 \concept{auxiliary data}
 \keyword{datasets}

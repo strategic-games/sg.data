@@ -13,7 +13,8 @@ This set of start letter combinations was used for an empirical study.
 It was not randomly created, but by humans.
 }
 \seealso{
-Other auxiliary data: \code{\link{DERECHAR}}
+Other auxiliary data: \code{\link{DERECHAR}},
+  \code{\link{DEREWO_letter_pairs}}
 }
 \concept{auxiliary data}
 \keyword{datasets}
