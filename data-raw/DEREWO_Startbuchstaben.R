@@ -27,6 +27,8 @@ dplyr::mutate(
 ) %>>%
 dplyr::mutate_at(9:12, as.integer) %>>%
 dplyr::mutate_at(13:16, as.numeric) %>>%
-dplyr::mutate_at(9:16, tidyr::replace_na, 0)
+dplyr::mutate_at(9:16, tidyr::replace_na, 0) %>>%
+dplyr::mutate(score_min = pmin(p_uh, p_lh, p_lv, p_rv)) %>>%
+dplyr::arrange(dplyr::desc(score_min))
 
 usethis::use_data(DEREWO_Startbuchstaben, compress = "xz", overwrite = T)
