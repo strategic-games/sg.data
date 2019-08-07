@@ -14,6 +14,7 @@ It was not randomly created, but by humans.
 }
 \seealso{
 Other auxiliary data: \code{\link{DERECHAR}},
+  \code{\link{DEREWO_Startbuchstaben}},
   \code{\link{DEREWO_letter_pairs}}
 }
 \concept{auxiliary data}
