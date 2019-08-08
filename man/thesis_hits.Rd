@@ -34,7 +34,8 @@ Path variables are omitted from the dataset, because they never change.
 }
 
 \seealso{
-Other simulation data: \code{\link{thesis_moves}}
+Other simulation data: \code{\link{sim_sl_moves}},
+  \code{\link{thesis_moves}}
 }
 \concept{simulation data}
 \keyword{datasets}
