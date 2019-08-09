@@ -1,3 +1,7 @@
+# Seed rng
+seed <- 3825
+set.seed(seed)
+
 # Load packages
 library("pipeR")
 library(purrr)
@@ -23,20 +27,16 @@ strategies <- as.list(Simulation$Condition$Player$BegriffixStrategy)
 restrictions <- as.list(Simulation$Condition$DirectionRestrictions$Mode)
 directions <- as.list(Results$Place$Direction)
 
-# Seed rng
-seed <- 3825
-set.seed(seed)
-
 # Build the simulation config
 info <- new(Simulation$Info,
-  title = "Thesis-Simulation",
+  title = "Thesis-Simulation-multifactorial",
   supplement = "multifaktorielles Variablendesign"
 )
 
 vocabulary_size <- -2:2 * 15000L + 50000L
 player_strategies <- c("random", "min_places", "availability")
 grid <- list(
-  start_letters_origin = c("random", "human"),
+  start_letters_method = c("char", "human"),
   board_size = c(8L, 10L),
   word_min_length = list(
     list(first = 5L, other = 4L),
@@ -64,7 +64,7 @@ wordlists <- new(WordLists,
 
 conditions <- map(grid, ~new(Simulation$Condition,
   trials = 10,
-  start_letters = generate_start_letters(.[["start_letters_origin"]]),
+  start_letters = generate_start_letters(.[["start_letters_method"]]),
   board_size = .[["board_size"]],
   word_min_length = do.call(
     Simulation$Condition$WordMinLength$new,
@@ -106,7 +106,7 @@ df_cond <- map_dfr(results$config$conditions, condition_as_list) %>>%
 # Add condition id and start letter origin
 tibble::add_column(
   condition = seq_along(results$config$conditions) - 1,
-  start_letters_origin = map_chr(grid, "start_letters_origin"),
+  start_letters_method = map_chr(grid, "start_letters_method"),
   .before = 1
 ) %>>%
 # Save some space by converting numerics to integers
@@ -116,38 +116,39 @@ assign_labels(c("starter_strategy", "opponent_strategy"), strategies) %>>%
 assign_labels(c("direction_restrictions_first", "direction_restrictions_other"), restrictions)
 
 # Extract move data
-df_res <- map_dfr(results$trials, trial_as_list)
+df_res <- map_dfr(results$trials, trial_as_list, direction_levels = as.integer(directions), direction_labels = names(directions)) %>>%
+modify_if(is.double, as.integer)
 
-# Join results into conditions
-df <- dplyr::nest_join(df_cond, df_res, by = "condition", name = "trials") %>>%
-# reshape dataset
-tidyr::unnest(trials) %>>%
+df <- dplyr::left_join(df_cond, df_res, by = "condition") %>>%
+dplyr::mutate(
+  duration = map_int(moves, nrow),
+  turns = as.integer(ceiling(duration / 2)),
+  winner = dplyr::recode_factor(duration %% 2, "1"="starter", "0"="opponent")
+)
+
+sim_multifactorial_games <- df %>>%
+dplyr::select(-moves) %>>%
+assign_info(results$config$info)
+
+sim_multifactorial_moves <- df %>>%
+dplyr::select(condition, trial, moves) %>>%
 tidyr::unnest(moves) %>>%
-modify_if(is_double, as.integer) %>>%
-modify_at("move", as.integer) %>>%
-assign_labels("direction", directions)
+dplyr::mutate(complexity = map_int(hits, nrow)) %>>%
+dplyr::select(-hits) %>>%
+assign_info(results$config$info)
 
-thesis_moves <- df %>>%
-dplyr::select(condition, trial, dplyr::everything(), -hits)
-thesis_hits <- df %>>%
-dplyr::select(condition, trial, move, hits) %>>%
+sim_multifactorial_hits <- df %>>%
+dplyr::select(condition, trial, moves) %>>%
+tidyr::unnest(moves) %>>%
+dplyr::select(condition, trial, move_id, hits) %>>%
 tidyr::unnest(hits) %>>%
-modify_if(is_double, as.integer) %>>%
-assign_labels("direction", directions)
+assign_info(results$config$info)
 
-thesis_info <- list(
-  title = results$config$info$title,
-  supplement = results$config$info$supplement,
-  version = as.list(results$config$info$version),
-  date = as.POSIXct(results$config$info$date$seconds, origin = "1970-01-01", tz = "gmt"),
-  random_seed = results$config$info$random_seed
-)
+## ---- Save data to files
+usethis::use_data(sim_multifactorial_games, compress = "xz", overwrite = T)
+usethis::use_data(sim_multifactorial_moves, compress = "xz", overwrite = T)
+usethis::use_data(sim_multifactorial_hits, compress = "xz", overwrite = T)
 
-# Save data to files
-usethis::use_data(
-  thesis_info, thesis_moves, thesis_hits, compress = "xz", overwrite = T
-)
-
-# Cleanup
+## ---- Cleanup
 unlink(files)
 resetDescriptorPool()
