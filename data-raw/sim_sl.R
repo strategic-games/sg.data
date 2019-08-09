@@ -101,31 +101,40 @@ assign_labels(c("starter_strategy", "opponent_strategy"), strategies) %>>%
 assign_labels(c("direction_restrictions_first", "direction_restrictions_other"), restrictions)
 
 # Extract move data
-df_res <- map_dfr(results$trials, trial_as_list)
+df_res <- map_dfr(results$trials, trial_as_list, direction_levels = as.integer(directions), direction_labels = names(directions)) %>>%
+modify_if(is.double, as.integer) %>>%
+dplyr::select(-trial)
 
 df <- dplyr::left_join(df_cond, df_res, by = "condition") %>>%
-tidyr::unnest(moves) %>>%
-modify_if(is_double, as.integer) %>>%
-modify_at("move", as.integer) %>>%
-assign_labels("direction", directions)
+dplyr::mutate(
+  duration = map_int(moves, nrow),
+  turns = as.integer(ceiling(duration / 2)),
+  winner = dplyr::recode_factor(duration %% 2, "1"="starter", "0"="opponent")
+)
+
+sim_sl_games <- df %>>%
+dplyr::select(-4:-12, -moves) %>>%
+assign_info(results$config$info)
 
 sim_sl_moves <- df %>>%
-dplyr::select(-4:-13, -hits) %>>%
+dplyr::select(condition, moves) %>>%
+tidyr::unnest(moves) %>>%
+dplyr::mutate(complexity = map_int(hits, nrow)) %>>%
+dplyr::select(-hits) %>>%
 assign_info(results$config$info)
 
 sim_sl_hits <- df %>>%
-dplyr::select(condition, move, hits) %>>%
+dplyr::select(condition, moves) %>>%
+tidyr::unnest(moves) %>>%
+dplyr::select(condition, move_id, hits) %>>%
 tidyr::unnest(hits) %>>%
-modify_if(is_double, as.integer) %>>%
-assign_labels("direction", directions) %>>%
 assign_info(results$config$info)
 
 ## ---- Save data to files
-usethis::use_data(
-  sim_sl_moves, sim_sl_hits, compress = "xz", overwrite = T
-)
+usethis::use_data(sim_sl_games, compress = "xz", overwrite = T)
+usethis::use_data(sim_sl_moves, compress = "xz", overwrite = T)
+usethis::use_data(sim_sl_hits, compress = "xz", overwrite = T)
 
 ## ---- Cleanup
 unlink(files)
 resetDescriptorPool()
-

@@ -4,11 +4,13 @@
 #' Except for start letters, the game configuration is kept constant and conforms to original Begriffix rules.
 #' Players use the random strategy and their vocabulary contains the first 50,000 words in DEREWO_Wortformen.
 #' @usage
+#' # Game data
+#' data(sim_sl_games, package = "sg.data")
 #' # Move data
 #' data(sim_sl_moves, package = "sg.data")
 #' # Hits data
 #' data(sim_sl_hits, package = "sg.data")
 #' @source generated with [Hangman](https://github.com/strategic-games/hangman)
-#' @aliases sim_sl sim_sl_hits
+#' @aliases sim_sl_moves sim_sl_hits
 #' @family simulation data
-"sim_sl_moves"
+"sim_sl_games"

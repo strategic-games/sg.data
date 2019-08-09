@@ -46,7 +46,7 @@ The reference vocabulary is always the complete word list.
 }
 
 \seealso{
-Other simulation data: \code{\link{sim_sl_moves}},
+Other simulation data: \code{\link{sim_sl_games}},
   \code{\link{thesis_hits}}
 }
 \concept{simulation data}
