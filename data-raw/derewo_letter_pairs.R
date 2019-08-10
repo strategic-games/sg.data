@@ -1,7 +1,7 @@
 library("pipeR")
 library(purrr)
 library(stringr)
-data(DEREWO_Wortformen)
+data(DEREWO_Wortformen, package = "sg.data")
 
 DEREWO_letter_pairs <- DEREWO_Wortformen$word %>>%
 map(function(x) {

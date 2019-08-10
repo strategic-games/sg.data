@@ -1,12 +1,12 @@
 library(pipeR)
-data(DEREWO_letter_pairs)
+data(DEREWO_letter_pairs, package = "sg.data")
 
 DEREWO_letter_pairs_prop <- prop.table(DEREWO_letter_pairs)
 letters_german <- c(letters, "ä", "ö", "ü", "ß")
 DEREWO_Startbuchstaben <- list(
   ul = letters_german,
-  ll = letters_german,
   ur = letters_german,
+  ll = letters_german,
   lr = letters_german
 ) %>>%
 expand.grid(stringsAsFactors = F) %>>%
@@ -31,4 +31,4 @@ dplyr::mutate_at(9:16, tidyr::replace_na, 0) %>>%
 dplyr::mutate(score_min = pmin(p_uh, p_lh, p_lv, p_rv)) %>>%
 dplyr::arrange(dplyr::desc(score_min))
 
-usethis::use_data(DEREWO_Startbuchstaben, compress = "xz", overwrite = T)
+usethis::use_data(DEREWO_Startbuchstaben, overwrite = T)
