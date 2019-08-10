@@ -3,14 +3,19 @@
 \docType{data}
 \name{Begriffix_Startbuchstaben}
 \alias{Begriffix_Startbuchstaben}
-\title{Begriffix Start letter combinations}
-\format{Dataset with 19 rows and 4 variables where each row represents a start letter combination and each variable contains the letter for one position on the game board. The variable names are composed of the row number and the column number, e.g., 45 means row 4 and column 5 (upper right) on the game board.}
+\title{19 manually created Begriffix Start letter combinations}
+\format{Dataset with 19 rows and 4 variables where each row represents a start letter combination and each variable contains the letter for one position on the game board.
+\describe{
+\item{UL}{Upper left position.}
+\item{UR}{Upper right position.}
+\item{LL}{Lower left position.}
+\item{LR}{Lower right position.}
+}}
 \usage{
 data(Begriffix_Startbuchstaben)
 }
 \description{
-This set of start letter combinations was used for an empirical study.
-It was not randomly created, but by humans.
+19 manually created Begriffix Start letter combinations
 }
 \seealso{
 Other auxiliary data: \code{\link{DERECHAR}},
