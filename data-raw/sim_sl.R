@@ -81,7 +81,7 @@ config <- new(Simulation,
 )
 
 ## ---- Save config tu temporary .pb file and Run hangman
-files <- tempfile(pattern = c("input", "output"), fileext = ".pb")
+files <- tempfile(pattern = c("config", "result"), fileext = ".pb")
 serialize(config, files[1])
 system2("HangmanCLI", c("simulation", "run", "-p", files[2], files[1]))
 results <- Results$read(files[2])
