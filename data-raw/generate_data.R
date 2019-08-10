@@ -1,12 +1,16 @@
-c(
-  "begriffix_startbuchstaben.r",
-  "derechar.r"
-) %>%
-system.file("data-raw", ., package = "sg.simulate") %>%
-purrr::walk(source)
+library(pipeR)
 
-start_letters <- stringr::str_to_lower(
-  purrr::pmap_chr(Begriffix_Startbuchstaben, paste0)
+system.file(
+  "data-raw", 
+  c(
+    "begriffix_startbuchstaben.r",
+    "derechar.r"
+  ),
+  package = "sg.data"
+) %>>%
+purrr::walk(source)
+start_letters <- do.call("paste0", Begriffix_Startbuchstaben)
+derechar_internal <- dplyr::filter(DERECHAR, RF > .001, !is.na(G))
+usethis::use_data(
+  start_letters, derechar_internal, overwrite = T, internal = T
 )
-derechar_internal <- DERECHAR[-31,]
-usethis::use_data(start_letters, derechar_internal, overwrite = T, internal = T)
