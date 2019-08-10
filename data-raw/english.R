@@ -1,5 +1,5 @@
-english <- readr::read_delim(
-  file = system.file("data-raw", "english.txt", package="sg.simulate"),
+english <- vroom::vroom(
+  file = system.file("data-raw", "english.txt", package="sg.data"),
   delim = " ",
   col_names = "word",
   col_types = "c"
