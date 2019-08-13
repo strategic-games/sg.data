@@ -19,8 +19,7 @@ data(Begriffix_Startbuchstaben)
 }
 \seealso{
 Other auxiliary data: \code{\link{DERECHAR}},
-  \code{\link{DEREWO_Startbuchstaben}},
-  \code{\link{DEREWO_letter_pairs}}
+  \code{\link{DEREWO_Startbuchstaben}}
 }
 \concept{auxiliary data}
 \keyword{datasets}

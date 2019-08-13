@@ -28,8 +28,7 @@ Februar 2018
 }
 \seealso{
 Other auxiliary data: \code{\link{Begriffix_Startbuchstaben}},
-  \code{\link{DEREWO_Startbuchstaben}},
-  \code{\link{DEREWO_letter_pairs}}
+  \code{\link{DEREWO_Startbuchstaben}}
 }
 \concept{auxiliary data}
 \keyword{datasets}

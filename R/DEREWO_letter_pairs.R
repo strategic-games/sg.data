@@ -2,5 +2,5 @@
 #'
 #' @usage data(DEREWO_letter_pairs)
 #' @format A 1D table with 825 entries
-#' @family auxiliary data
+#' @family letter pair frequency tables
 "DEREWO_letter_pairs"

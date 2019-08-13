@@ -21,7 +21,7 @@ The data can be used for weighted sampling of Begriffix start letters.
 }
 \seealso{
 Other auxiliary data: \code{\link{Begriffix_Startbuchstaben}},
-  \code{\link{DERECHAR}}, \code{\link{DEREWO_letter_pairs}}
+  \code{\link{DERECHAR}}
 }
 \concept{auxiliary data}
 \keyword{datasets}

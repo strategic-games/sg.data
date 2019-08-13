@@ -12,9 +12,7 @@ data(DEREWO_letter_pairs)
 Letter pairs found in DEREWO_Wortformen with their frequencies
 }
 \seealso{
-Other auxiliary data: \code{\link{Begriffix_Startbuchstaben}},
-  \code{\link{DERECHAR}},
-  \code{\link{DEREWO_Startbuchstaben}}
+Other letter pair frequency tables: \code{\link{Scrabbledict_letter_pairs}}
 }
-\concept{auxiliary data}
+\concept{letter pair frequency tables}
 \keyword{datasets}
