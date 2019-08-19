@@ -22,7 +22,8 @@ data(sim_multifactorial_hits, package = "sg.data")
 This simulation contains 36,000 Begriffix games where 3,600 factor level combinations have been defined and each of them was played 10 times.
 }
 \seealso{
-Other simulation data: \code{\link{sim_sl_games}}
+Other simulation data: \code{\link{sim_dir_games}},
+  \code{\link{sim_sl_games}}
 }
 \concept{simulation data}
 \keyword{datasets}

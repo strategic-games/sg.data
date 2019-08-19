@@ -24,7 +24,8 @@ Except for start letters, the game configuration is kept constant and conforms t
 Players use the random strategy and their vocabulary contains the first 50,000 words in DEREWO_Wortformen.
 }
 \seealso{
-Other simulation data: \code{\link{sim_multifactorial_games}}
+Other simulation data: \code{\link{sim_dir_games}},
+  \code{\link{sim_multifactorial_games}}
 }
 \concept{simulation data}
 \keyword{datasets}
