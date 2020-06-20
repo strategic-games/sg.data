@@ -27,5 +27,6 @@ Suggests:
     ggplot2,
     pander,
     pipeR,
-    stringr
+    stringr,
+    vroom
 VignetteBuilder: knitr
